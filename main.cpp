@@ -1,12 +1,9 @@
-#include<iostream>
-#include<conio.h>
-#include<string>
-#include<stdlib.h>
-#include<fstream>
+#include "headers.cpp"
 #include "user_pass.cpp"
+#include "login_page.cpp"
 using namespace std;
 
-int main(){
+void start(){
 	int num = 0;
 	while(num != 3){
 		cout << "1. New User?\n2. Login\n3. Exit\nEnter: ";
@@ -27,8 +24,7 @@ int main(){
 			int found = 0;
 			cout << "Enter Username: ";
 			cin >> user_nameE;
-			cout << "Enter Password: ";
-			cin >> user_passE;
+			user_passE = pwd_getter();
 			ifstream users("user.txt");
 			string user_name, user_pwd;
 			while(found == 0 && !users.eof()){
@@ -37,23 +33,28 @@ int main(){
 					if(user_pwd == user_passE){
 						cout << "Login Successful\n";
 						found = 1;
+						system("pause");
 					}
 					else{
-						cout << "Wrong Password. Login Failed";
+						cout << "Wrong Password. Login Failed\n";
 						found = 2;
 					}
 				}
 			}
-			if(found == 0){
-				cout << "User Not Found";
-			}
-			system("pause");
 			users.close();
+			if(found == 0)
+				cout << "User Not Found";
+			else if(found == 1)
+				login_page(user_name, user_pwd);
+			system("pause");
 		}
 		system("cls");
 		if(num == 3)
 			cout << "\nThanks\n";
 	}
-	
+}
+
+int main(){
+	start();
 	return 0;
 }
