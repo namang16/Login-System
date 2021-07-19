@@ -1,7 +1,8 @@
 #include "headers.cpp"
+#include "pwd_getter.cpp"
 using namespace std;
 
-void login_page(string u_name, string u_pwd){
+void login_page(string Iuser_name, string Iuser_pwd){
 	int num = 0;
 	while(num != 3){
 		system("cls");
@@ -14,17 +15,16 @@ void login_page(string u_name, string u_pwd){
 			string user_pwd;
 			fstream users("user.txt");
 			users >> user_name;
-			while(user_name != u_name){
+			while(user_name != Iuser_name){
 				users >> user_pwd >> user_name;
 			}
 			users.unget();
 			cout << "Enter Password: ";
-			cin >> user_pwd;
+			user_pwd = pwd_getter();
 			users << user_pwd << endl;
 			users.close();
 			system("pause");
 		}
-		else if(num == 3)
-			return;
 	}
+	return;
 }

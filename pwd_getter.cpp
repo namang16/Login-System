@@ -12,8 +12,10 @@ string pwd_getter(){
 			putchar('*');
 			pass.push_back(ch);
 		}
-		else if(ch_int == 13)
+		else if(ch_int == 13){
 			pass_set = 1;
+			cout << endl;
+		}
 		else if(ch_int == 8)
 			if(pass.size() > 0){
 				CONSOLE_SCREEN_BUFFER_INFO cinfoc;
