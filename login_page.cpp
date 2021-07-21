@@ -1,6 +1,7 @@
 #include "headers.cpp"
 #include "pwd_getter.cpp"
 using namespace std;
+void change_uname(string);
 void change_pass(string, string);
 
 void login_page(string Iuser_name, string Iuser_pwd){
@@ -10,10 +11,44 @@ void login_page(string Iuser_name, string Iuser_pwd){
 		cout << "1. Change Username\n2. Change Password\n3. Logout\nEnter: ";
 		cin >> num;
 		if(num == 1)
-			return;
+			change_uname(Iuser_name);
 		else if(num == 2)
 			change_pass(Iuser_name, Iuser_pwd);
 	}
+	return;
+}
+
+void change_uname(string user_name){
+	system("cls");
+	string new_uname, user_pwd;
+	cout << "Enter New Username(without spaces): ";
+	cin >> new_uname;
+	ifstream users("user.txt");
+	ofstream temp("temp.txt");
+	string user_nameFFile, user_pwdFFile;
+	users >> user_nameFFile >> user_pwdFFile;
+	while(!users.eof()){
+		if(user_nameFFile == user_name){
+			temp << new_uname << " " << user_pwdFFile << endl;
+		}
+		else if(user_nameFFile == new_uname){
+			cout << "\nThis Username already exists!\n";
+			temp.close();
+			users.close();
+			remove("temp.txt");
+			system("pause");
+			return;
+		}
+		else
+			temp << user_nameFFile << " " << user_pwdFFile << endl;
+		users >> user_nameFFile >> user_pwdFFile;
+	}
+	users.close();
+	temp.close();
+	remove("user.txt");
+	rename("temp.txt", "user.txt");
+	cout << "\nUsername Changed Successfully\n";
+	system("pause");
 	return;
 }
 
