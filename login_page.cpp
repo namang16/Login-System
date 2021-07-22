@@ -112,13 +112,3 @@ void change_pass(string user_name, string user_pwd){
 	}
 	return;
 }
-
-
-
-
-
-
-
-
-
-

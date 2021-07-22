@@ -1,10 +1,12 @@
 #include "headers.cpp"
 #include "login_page.cpp"
+#include "userfile_checker.cpp"
 using namespace std;
 string set_uname();
 string set_upwd();
 
 void start(){
+	file_exist();
 	int num = 0;
 	while(num != 3){
 		system("cls");
