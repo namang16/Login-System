@@ -14,6 +14,10 @@ void login_page(string Iuser_name, string Iuser_pwd){
 			change_uname(Iuser_name);
 		else if(num == 2)
 			change_pass(Iuser_name, Iuser_pwd);
+		else if(num == 3)
+			cout << "\nLog Out Successful\n";
+		else
+			cout << "\nWrong Choice\n";
 	}
 	return;
 }
@@ -21,8 +25,25 @@ void login_page(string Iuser_name, string Iuser_pwd){
 void change_uname(string user_name){
 	system("cls");
 	string new_uname, user_pwd;
+	cout << "Username can be 4-10 characters long and cannot start with a digit\n";
 	cout << "Enter New Username(without spaces): ";
 	cin >> new_uname;
+	if(new_uname.size() < 4 || new_uname.size() > 10){
+		cout << "\nUsername should be 4-10 characters long\n";
+		system("pause");
+		return;
+	}
+	if(new_uname[0] - '0' >= 0 && new_uname[0] - '0' <= 9){
+		cout << "\nUsername cannot start with digits\n";
+		system("pause");
+		return;
+	}
+	int i=0;
+	while(i < new_uname.size()){
+		if(isupper(new_uname[i]))
+			new_uname[i] = tolower(new_uname[i]);
+		i++;
+	}
 	ifstream users("user.txt");
 	ofstream temp("temp.txt");
 	string user_nameFFile, user_pwdFFile;
@@ -63,7 +84,7 @@ void change_pass(string user_name, string user_pwd){
 	cout << "Please Re-Enter Your New password:\n";
 	new_pass_re = pwd_getter();
 	if(current_pass != user_pwd){
-		cout << "\nYour Current Password is wrong!!\n";
+		cout << "\nYour Current Password is Incorrect!!\n";
 		system("pause");
 	}
 	else if(new_pass != new_pass_re){

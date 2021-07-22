@@ -4,3 +4,4 @@
 #include<stdlib.h>
 #include<fstream>
 #include<windows.h>
+#include<cctype>
