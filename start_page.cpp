@@ -35,7 +35,8 @@ void start(){
 			string Iuser_name, Iuser_pass;
 			int found = 0;
 			cout << "Enter Username: ";
-			cin >> Iuser_name;
+			cin.ignore();
+			getline(cin, Iuser_name);
 			int i=0;
 			while(i < Iuser_name.size()){
 				if(isupper(Iuser_name[i]))
@@ -43,18 +44,23 @@ void start(){
 				i++;
 			}
 			Iuser_pass = pwd_getter();
+			if(Iuser_name.find(' ') != string::npos){
+				cout << "\nUsername not valid\n";
+				system("pause");
+				continue;
+			}
 			ifstream users("user.txt");
 			string user_name, user_pwd;
 			users >> user_name >> user_pwd;
 			while(found == 0 && !users.eof()){
 				if(user_name == Iuser_name){
 					if(user_pwd == Iuser_pass){
-						cout << "Login Successful\n";
+						cout << "\nLogin Successful\n";
 						found = 1;
 						system("pause");
 					}
 					else{
-						cout << "Wrong Password. Login Failed\n";
+						cout << "\nWrong Password. Login Failed\n";
 						found = 2;
 					}
 				}
@@ -62,13 +68,13 @@ void start(){
 			}
 			users.close();
 			if(found == 0)
-				cout << "User Not Found\n";
+				cout << "\nUser Not Found\n";
 			else if(found == 1)
 				login_page(user_name, user_pwd);
 			system("pause");
 		}
 		else if(num == 3)
-			cout << "\nThanks\n";
+			cout << "Thanks\n";
 		else
 			cout << "\nWrong Choice\n";
 	}
@@ -78,7 +84,12 @@ string set_uname(){
 	string u_name;
 	cout << "Username can be 4-10 characters long and cannot start with a digit\n";
 	cout << "Enter Username(without spaces): ";
-	cin >> u_name;
+	cin.ignore();
+	getline(cin, u_name);
+	if(u_name.find(' ') != string::npos){
+		cout << "\nUsername not valid\n";
+		return "U_N_NAllowed";
+	}
 	if(u_name.size() < 4 || u_name.size() > 10){
 		cout << "\nUsername should be 4-10 characters long\n";
 		return "U_N_NAllowed";

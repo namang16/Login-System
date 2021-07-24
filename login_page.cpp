@@ -17,7 +17,7 @@ void login_page(string Iuser_name, string Iuser_pwd){
 		else if(num == 3)
 			cout << "\nLog Out Successful\n";
 		else
-			cout << "\nWrong Choice\n";
+			cout << "\nWrong Choice";
 	}
 	return;
 }
@@ -27,7 +27,13 @@ void change_uname(string user_name){
 	string new_uname, user_pwd;
 	cout << "Username can be 4-10 characters long and cannot start with a digit\n";
 	cout << "Enter New Username(without spaces): ";
-	cin >> new_uname;
+	cin.ignore();
+	getline(cin, new_uname);
+	if(new_uname.find(' ') != string::npos){
+		cout << "\nUsername not valid\n";
+		system("pause");
+		return;
+	}
 	if(new_uname.size() < 4 || new_uname.size() > 10){
 		cout << "\nUsername should be 4-10 characters long\n";
 		system("pause");
