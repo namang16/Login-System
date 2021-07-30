@@ -12,8 +12,8 @@ void start(){
 		system("cls");
 		cout << "1. New User?\n2. Login\n3. Exit\nEnter: ";
 		cin >> num;
-		system("cls");
 		if(num == 1){
+			system("cls");
 			string user_name = set_uname();
 			if(user_name != "U_N_exist" && user_name != "U_N_NAllowed"){
 				string user_pwd = set_upwd();
@@ -29,9 +29,9 @@ void start(){
 				else
 					cout << "\nYour passwords dont match\n";
 			}
-			system("pause");
 		}
 		else if(num == 2){
+			system("cls");
 			string Iuser_name, Iuser_pass;
 			int found = 0;
 			cout << "Enter Username: ";
@@ -72,12 +72,14 @@ void start(){
 				cout << "\nWrong Password. Login Failed\n";
 			else if(found == 3)
 				cout << "\nUsername not valid\n";
-			system("pause");
 		}
-		else if(num == 3)
-			cout << "Thanks\n";
+		else if(num == 3){
+			system("cls");
+			cout << "Thanks\n\n";
+		}
 		else
 			cout << "\nWrong Choice\n";
+		system("pause");
 	}
 }
 
