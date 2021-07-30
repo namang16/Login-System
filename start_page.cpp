@@ -37,40 +37,41 @@ void start(){
 			cout << "Enter Username: ";
 			cin.ignore();
 			getline(cin, Iuser_name);
-			int i=0;
-			while(i < Iuser_name.size()){
-				if(isupper(Iuser_name[i]))
-					Iuser_name[i] = tolower(Iuser_name[i]);
-				i++;
-			}
 			Iuser_pass = pwd_getter();
-			if(Iuser_name.find(' ') != string::npos){
-				cout << "\nUsername not valid\n";
-				system("pause");
-				continue;
+			if(Iuser_name.find(' ') != string::npos || (Iuser_name[0] - '0' >= 0 && Iuser_name[0] - '0' <= 9))
+				found = 3;
+			else{
+				int i=0;
+				while(i < Iuser_name.size()){
+					if(isupper(Iuser_name[i]))
+						Iuser_name[i] = tolower(Iuser_name[i]);
+					i++;
+				}
 			}
 			ifstream users("user.txt");
 			string user_name, user_pwd;
 			users >> user_name >> user_pwd;
 			while(found == 0 && !users.eof()){
 				if(user_name == Iuser_name){
-					if(user_pwd == Iuser_pass){
-						cout << "\nLogin Successful\n";
+					if(user_pwd == Iuser_pass)
 						found = 1;
-						system("pause");
-					}
-					else{
-						cout << "\nWrong Password. Login Failed\n";
+					else
 						found = 2;
-					}
 				}
 				users >> user_name >> user_pwd;
 			}
 			users.close();
 			if(found == 0)
 				cout << "\nUser Not Found\n";
-			else if(found == 1)
+			else if(found == 1){
+				cout << "\nLogin Successful\n";
+				system("pause");
 				login_page(user_name, user_pwd);
+			}
+			else if(found == 2)
+				cout << "\nWrong Password. Login Failed\n";
+			else if(found == 3)
+				cout << "\nUsername not valid\n";
 			system("pause");
 		}
 		else if(num == 3)
