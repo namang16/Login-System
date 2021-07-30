@@ -66,7 +66,7 @@ void start(){
 			else if(found == 1){
 				cout << "\nLogin Successful\n";
 				system("pause");
-				login_page(user_name, user_pwd);
+				login_page(Iuser_name, Iuser_pass);
 			}
 			else if(found == 2)
 				cout << "\nWrong Password. Login Failed\n";
