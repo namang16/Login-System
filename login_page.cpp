@@ -3,21 +3,26 @@
 using namespace std;
 void change_uname(string);
 void change_pass(string, string);
+int del_user(string, string);
 
 void login_page(string Iuser_name, string Iuser_pwd){
-	int num = 0;
-	while(num != 3){
+	int num = 0, num_del=-1;	
+	while(num != 4){
 		system("cls");
-		cout << "1. Change Username\n2. Change Password\n3. Logout\nEnter: ";
+		cout << "1. Change Username\n2. Change Password\n3. Delete Account?\n4. Logout\nEnter: ";
 		cin >> num;
 		if(num == 1)
 			change_uname(Iuser_name);
 		else if(num == 2)
 			change_pass(Iuser_name, Iuser_pwd);
 		else if(num == 3)
+			num_del = del_user(Iuser_name, Iuser_pwd);  
+		else if(num == 4)
 			cout << "\nLog Out Successful\n";
 		else
 			cout << "\nWrong Choice";
+		if(num == 3 && num_del == 1)
+			num = 4;
 	}
 	return;
 }
@@ -118,3 +123,46 @@ void change_pass(string user_name, string user_pwd){
 	}
 	return;
 }
+
+int del_user(string user_name, string user_pwd){
+	system("cls");
+	char c;
+	cout << "Are you sure you want to delete your account? (y/n): ";
+	cin.ignore();
+	cin.get(c);
+	if(c == 'y'){
+		cout << "\nPlease Enter your Password for Confirmation\n";
+		string pass_conf = pwd_getter();
+		if(pass_conf == user_pwd){
+			ifstream users("user.txt");
+			ofstream temp("temp.txt");
+			string user_nameFFile, user_pwdFFile;
+			users >> user_nameFFile >> user_pwdFFile;
+			while(!users.eof()){
+				if(user_nameFFile != user_name)
+					temp << user_nameFFile << " " << user_pwdFFile << endl;
+				users >> user_nameFFile >> user_pwdFFile;
+			}
+			users.close();
+			temp.close();
+			remove("user.txt");
+			rename("temp.txt", "user.txt");
+			cout << "\nAccount Deleted Successfully\n";
+			return 1;
+		}
+		else
+			cout << "\nWrong Password\n";
+	}
+	else if(c == 'n')
+		return 0;
+	else
+		cout << "\nWrong Choice\n";
+	
+	system("pause");
+	return -1;
+}
+
+
+
+
+
