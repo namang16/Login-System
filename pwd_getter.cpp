@@ -1,3 +1,11 @@
+/***************************************************************************
+This file contains the pwd_getter() function which makes the password hidden.
+No one is able to see the password and only user knows what he entered.
+It takes characters as input without echoing them and printing '*' instead.
+Only a-z, A-Z, 0-9 and '@' will be taken as input.
+No other special character allowed.
+***************************************************************************/
+
 #include "headers.cpp"
 using namespace std;
 

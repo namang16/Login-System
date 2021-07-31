@@ -1,6 +1,9 @@
+/*************************************************************************
+This file contains the driver function which calls start() upon execution.
+*************************************************************************/
+
 #include "headers.cpp"
 #include "start_page.cpp"
-using namespace std;
 
 int main(){
 	start();

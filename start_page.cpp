@@ -1,3 +1,13 @@
+/****************************************************************************
+This file contains start() function which displays the first menu.
+The Menu has Options to Create a New user account or Login into an existing account.
+For new user, it calls two functions set_uname() for getting the username and
+set_upwd() for getting the password. Respective Constraints are defined in these
+funtions itself.
+For login, it takes username and password as input and calls login_page() if the
+credentials match to the data stored in user.txt file. 
+*****************************************************************************/
+
 #include "headers.cpp"
 #include "login_page.cpp"
 #include "userfile_checker.cpp"

@@ -1,3 +1,14 @@
+/************************************************************************
+This file contains login_page() function which executes only 
+if the credentials entered by the user match with the stored ones.
+It displays the login menu through which you can change your username
+or your password or you can even delete your account.
+All 3 options call their respective functions which modifies the user.txt
+to store new credentials or erasing the existing one which is logged in.
+4th option in the menu is logout which terminates the loop and returns to
+start().
+************************************************************************/
+
 #include "headers.cpp"
 #include "pwd_getter.cpp"
 using namespace std;
@@ -161,8 +172,3 @@ int del_user(string user_name, string user_pwd){
 	system("pause");
 	return -1;
 }
-
-
-
-
-
