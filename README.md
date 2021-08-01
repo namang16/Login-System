@@ -14,6 +14,7 @@ I have used the concept of file handling which i had learned in my last semester
 - Password hidden while entering
 - white spaces, special characters other than '@' are not considered in Password
 - Username and Password can be changed after login
+- User can also delete their account
 
 ## Author
 
@@ -44,3 +45,24 @@ Run project
  - [cplusplus](https://www.cplusplus.com/)
  - [Stack Overflow](https://stackoverflow.com/)
  - [GeeksforGeeks](https://www.geeksforgeeks.org/)
+
+## Screenshots
+
+  - ### Start Page
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/Start%20page.png)
+  - ### Username Errors
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/uname%20digit%20error.png)
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/uname%20len%20error.png)
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/uname%20not%20valid.png)
+  - ### Password Error
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/pass%20error.png)
+  - ### Login
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/user%20not%20found.png)
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/wrong%20pass.png)
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/login%20success.png)
+  - ### Login Page
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/Login%20page.png) 
+  - ### Change Password
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/Change%20Password.png)
+  - ### Delete Account
+    ### ![screenshot](https://github.com/namang16/Login-System/blob/master/Screenshots/Delete%20Account.png)
